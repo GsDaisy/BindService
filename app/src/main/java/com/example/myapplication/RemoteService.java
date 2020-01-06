@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class RemoteService extends Service {
-    private final String TAG = "RemoteService";
+   /* private final String TAG = "RemoteService";
     public static final int MSG_CLIENT_CONNECT = 1;
     public static final int MSG_CLIENT_DISCONNECT = 2;
     public static final int MSG_ADD_VALUE = 3;
@@ -78,5 +79,82 @@ public class RemoteService extends Service {
                     break;
             }
         }
+    }*/
+
+    public static final String INTENT_ACTION = "intent.action.test.service";
+    private static final int MSG_WORK = 1;
+
+    final RemoteCallbackList<IRemoteServiceCallback> callbacks = new RemoteCallbackList<IRemoteServiceCallback>();
+
+    private final IRemoteService.Stub mBinder = new IRemoteService.Stub() {
+
+        @Override
+        public boolean registerCallback(IRemoteServiceCallback callback) throws RemoteException {
+            boolean flag = false;
+            if (callback != null) {
+                flag = unregisterCallback(callback);
+            }
+            return flag;
+        }
+
+        @Override
+        public boolean unregisterCallback(IRemoteServiceCallback callback) throws RemoteException {
+            boolean flag = false;
+            if (callback != null) {
+                flag = callbacks.register(callback);
+            }
+            return flag;
+        }
+    };
+
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        Log.d("TEST", "onBind..");
+        if (intent.getAction().equals(INTENT_ACTION)) {
+            Log.d("TEST", "action is equals");
+            return mBinder;
+        }
+        Log.d("TEst", "action is not equals : " + intent.getAction());
+        return null;
     }
+
+    @Override
+    public void onCreate() {
+        Log.d("test", "service onCreate()");
+        handler.sendEmptyMessage(MSG_WORK);
+        super.onCreate();
+    }
+
+    @Override
+    public void onDestroy() {
+        handler.removeMessages(MSG_WORK);
+        super.onDestroy();
+    }
+
+    private Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(@NonNull Message msg) {
+
+            switch (msg.what) {
+                case MSG_WORK:
+                    int n = callbacks.beginBroadcast();
+                    for (int i = 0; i < n; i++) {
+                        try {
+                            callbacks.getBroadcastItem(i).valueChanged(System.currentTimeMillis());
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    Log.d("TEST", "Handler work : callbacks clients count is " + n);
+                    callbacks.finishBroadcast();
+                    handler.sendEmptyMessage(MSG_WORK);
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        }
+    });
 }

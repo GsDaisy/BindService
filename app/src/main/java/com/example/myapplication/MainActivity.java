@@ -20,7 +20,7 @@ import android.widget.Button;
 import javax.security.auth.callback.CallbackHandler;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = "MainActivity";
+    /*private final String TAG = "MainActivity";
 
     private Messenger mServiceCallback = null;
     private Messenger mClientCallback = new Messenger(new CallbackHandler());
@@ -83,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
-    }
+    }*/
+    
+
 }
 
 
