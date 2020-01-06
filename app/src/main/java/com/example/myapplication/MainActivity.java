@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ComponentName;
@@ -14,6 +15,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
@@ -84,7 +86,72 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }*/
-    
+
+    IRemoteServiceCallback mCallback = new IRemoteServiceCallback.Stub() {
+        @Override
+        public void valueChanged(long value) throws RemoteException {
+            Log.i("main", "Activity callback value : " + value);
+        }
+    };
+
+    IRemoteService mService;
+    ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            if (service != null) {
+                mService = IRemoteService.Stub.asInterface(service);
+                try {
+                    mService.registerCallback(mCallback);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            if (mService != null) {
+                try {
+                    mService.unregisterCallback(mCallback);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+
+    private void startServiceBind(){
+        startService(new Intent(this, RemoteService.class));
+        //Intent intent = new Intent().setAction("com.example.myapplication.RemoteService");
+        //intent.setPackage("com.example.myapplication");
+        //Intent intent = new Intent("com.example.myapplication.RemoteService");
+        //intent.setPackage("com.example.myapplication");
+        Intent intent = new Intent(this, RemoteService.class);
+        intent.setAction("com.example.myapplication");
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    }
+    private void stopServiceBind(){
+        unbindService(mConnection);
+        startService(new Intent(this, RemoteService.class));
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void onResume() {
+        startServiceBind();
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        stopServiceBind();
+        super.onStop();
+    }
 
 }
 

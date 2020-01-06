@@ -81,10 +81,10 @@ public class RemoteService extends Service {
         }
     }*/
 
-    public static final String INTENT_ACTION = "intent.action.test.service";
+    public static final String INTENT_ACTION = "com.example.myapplication";
     private static final int MSG_WORK = 1;
 
-    final RemoteCallbackList<IRemoteServiceCallback> callbacks = new RemoteCallbackList<IRemoteServiceCallback>();
+    final RemoteCallbackList<IRemoteServiceCallback> callbacks = new RemoteCallbackList();
 
     private final IRemoteService.Stub mBinder = new IRemoteService.Stub() {
 
@@ -149,6 +149,12 @@ public class RemoteService extends Service {
                     }
                     Log.d("TEST", "Handler work : callbacks clients count is " + n);
                     callbacks.finishBroadcast();
+
+                    try {
+                        Thread.sleep(2000);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
                     handler.sendEmptyMessage(MSG_WORK);
                     break;
                 default:
