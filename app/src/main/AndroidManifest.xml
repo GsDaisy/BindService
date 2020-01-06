@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".RemoteService"
+        <service android:name="com.example.myapplication.RemoteService"
             android:process=":remote"/>
 
     </application>

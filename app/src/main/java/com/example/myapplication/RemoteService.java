@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 
+
 public class RemoteService extends Service {
    /* private final String TAG = "RemoteService";
     public static final int MSG_CLIENT_CONNECT = 1;
@@ -84,7 +85,8 @@ public class RemoteService extends Service {
     public static final String INTENT_ACTION = "com.example.myapplication";
     private static final int MSG_WORK = 1;
 
-    final RemoteCallbackList<IRemoteServiceCallback> callbacks = new RemoteCallbackList();
+
+    final RemoteCallbackList<IRemoteServiceCallback> callbacks = new RemoteCallbackList<IRemoteServiceCallback>();
 
     private final IRemoteService.Stub mBinder = new IRemoteService.Stub() {
 
