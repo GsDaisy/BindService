@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 
-
 public class RemoteService extends Service {
    /* private final String TAG = "RemoteService";
     public static final int MSG_CLIENT_CONNECT = 1;
@@ -107,6 +106,8 @@ public class RemoteService extends Service {
             }
             return flag;
         }
+
+
     };
 
 
@@ -115,7 +116,7 @@ public class RemoteService extends Service {
     public IBinder onBind(Intent intent) {
         Log.d("TEST", "onBind..");
         if (intent.getAction().equals(INTENT_ACTION)) {
-            Log.d("TEST", "action is equals");
+            Log.d("TEST", "action is equals : " + intent.getAction());
             return mBinder;
         }
         Log.d("TEst", "action is not equals : " + intent.getAction());
@@ -145,6 +146,7 @@ public class RemoteService extends Service {
                     for (int i = 0; i < n; i++) {
                         try {
                             callbacks.getBroadcastItem(i).valueChanged(System.currentTimeMillis());
+                            Log.d("value", callbacks.getBroadcastItem(i).toString());
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
@@ -154,7 +156,7 @@ public class RemoteService extends Service {
 
                     try {
                         Thread.sleep(2000);
-                    }catch (InterruptedException e){
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     handler.sendEmptyMessage(MSG_WORK);

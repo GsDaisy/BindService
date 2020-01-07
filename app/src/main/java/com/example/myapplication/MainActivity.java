@@ -80,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     IRemoteServiceCallback mCallback = new IRemoteServiceCallback.Stub() {
+
         @Override
         public void valueChanged(long value) throws RemoteException {
+            Log.d("main value", "value : " + value);
             Log.i("main", "Activity callback value : " + value);
         }
     };
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
     ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+
             if (service != null) {
                 mService = IRemoteService.Stub.asInterface(service);
                 try {
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+
             if (mService != null) {
                 try {
                     mService.unregisterCallback(mCallback);
@@ -112,17 +116,14 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void startServiceBind(){
+    private void startServiceBind() {
         startService(new Intent(this, RemoteService.class));
-        //Intent intent = new Intent().setAction("com.example.myapplication.RemoteService");
-        //intent.setPackage("com.example.myapplication");
-        //Intent intent = new Intent("com.example.myapplication.RemoteService");
-        //intent.setPackage("com.example.myapplication");
         Intent intent = new Intent(this, RemoteService.class);
         intent.setAction("com.example.myapplication");
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
-    private void stopServiceBind(){
+
+    private void stopServiceBind() {
         unbindService(mConnection);
         startService(new Intent(this, RemoteService.class));
     }
