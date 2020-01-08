@@ -106,8 +106,6 @@ public class RemoteService extends Service {
             }
             return flag;
         }
-
-
     };
 
 
