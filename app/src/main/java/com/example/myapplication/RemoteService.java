@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.os.Messenger;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 
 
 public class RemoteService extends Service {
@@ -106,6 +104,11 @@ public class RemoteService extends Service {
             }
             return flag;
         }
+
+        @Override
+        public String getMessage() throws RemoteException {
+            return "Hello World!";
+        }
     };
 
 
@@ -117,7 +120,7 @@ public class RemoteService extends Service {
             Log.d("TEST", "action is equals : " + intent.getAction());
             return mBinder;
         }
-        Log.d("TEst", "action is not equals : " + intent.getAction());
+        Log.d("Test", "action is not equals : " + intent.getAction());
         return null;
     }
 

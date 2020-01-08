@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     /*private final String TAG = "MainActivity";
@@ -97,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 mService = IRemoteService.Stub.asInterface(service);
                 try {
                     mService.registerCallback(mCallback);
+                    String message = mService.getMessage();
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
