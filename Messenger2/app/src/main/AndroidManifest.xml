@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.helixtech.msgservicetest">
+    package="com.helixtech.msgservicetest2">
 
     <application
         android:allowBackup="true"
@@ -16,17 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <service
-            android:name="com.helixtech.msgservicetest.MessengerService"
+            android:name="com.helixtech.msgservicetest2.MessengerService"
             android:exported="true"
             android:process=":remote"
             android:stopWithTask="false">
-
             <intent-filter>
-                <action android:name="com.helixtech.msgservicetest.MessengerService" />
+                <action android:name="com.helixtech.msgservicetest2.MessengerService" />
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>

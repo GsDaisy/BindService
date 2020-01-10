@@ -1,4 +1,4 @@
-package com.helixtech.msgservicetest;
+package com.helixtech.msgservicetest2;
 
 import android.app.Service;
 import android.content.Intent;

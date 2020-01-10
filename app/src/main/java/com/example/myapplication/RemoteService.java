@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 
-
 public class RemoteService extends Service {
+
    /* private final String TAG = "RemoteService";
     public static final int MSG_CLIENT_CONNECT = 1;
     public static final int MSG_CLIENT_DISCONNECT = 2;

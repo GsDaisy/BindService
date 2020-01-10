@@ -1,4 +1,4 @@
-package com.helixtech.msgservicetest;
+package com.helixtech.msgservicetest2;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MessengerService.class);
                 //i.setPackage("com.helixtech.msgservicetest");
-                i.setAction("com.helixtech.msgservicetest.MessengerService");
+                i.setAction("com.helixtech.msgservicetest2.MessengerService");
                 //Intent ii = new Intent();
                 //i.setClassName("com.helixtech.msgservicetest2", "MessengerService");
                 bindService(i, conn, Context.BIND_AUTO_CREATE);
