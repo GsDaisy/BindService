@@ -9,6 +9,8 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class MessengerService extends Service {
@@ -39,8 +41,8 @@ public class MessengerService extends Service {
                     mValue = msg.arg1;
                     for (int i = mClients.size() - 1; i >= 0; i--) {
                         try {
-                            Log.d(TAG, "Send msg_added_value mnessage to client : "+i);
-                            Log.d(TAG, mValue+"");
+                            Log.d(TAG, "Send msg_added_value mnessage to client : " + i);
+                            Log.d(TAG, mValue + "");
                             mClients.get(i).send(Message.obtain(null, MSG_SET_VALUE, mValue, 0));
                         } catch (RemoteException e) {
                             mClients.remove(i);
@@ -74,4 +76,7 @@ public class MessengerService extends Service {
     public IBinder onBind(Intent arg0) {
         return mMessenger.getBinder();
     }
+
+
+
 }

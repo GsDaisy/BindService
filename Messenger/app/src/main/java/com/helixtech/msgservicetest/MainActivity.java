@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 Message msg = Message.obtain(null, MSG_REGISTER_CLIENT);
                 msg.replyTo = mMessenger;
                 mService.send(msg);
-                Log.d(TAG, "Msg set value 전 : "+this.hashCode());
+                Log.d(TAG, "Msg set value 전 : " + this.hashCode());
                 msg = Message.obtain(null, MSG_SET_VALUE, this.hashCode(), 0);
                 mService.send(msg);
-                Log.d(TAG, "Msg set value 후 : "+msg.arg1);
+                Log.d(TAG, "Msg set value 후 : " + msg.arg1);
                 mIsBound = true;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -83,11 +83,13 @@ public class MainActivity extends AppCompatActivity {
         Button btn3 = new Button(getBaseContext());
         btn3.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MessengerService.class);
+                //Intent i = new Intent(getApplicationContext(), MessengerService.class);
                 //i.setPackage("com.helixtech.msgservicetest");
-                i.setAction("com.helixtech.msgservicetest.MessengerService");
-                //Intent ii = new Intent();
-                //i.setClassName("com.helixtech.msgservicetest2", "MessengerService");
+                //i.setAction("com.helixtech.msgservicetest.MessengerService");
+
+                Intent i = new Intent();
+                i.setPackage("com.helixtech.msgservicetest2");
+                i.setAction("com.helixtech.msgservicetest2.MessengerService");
                 bindService(i, conn, Context.BIND_AUTO_CREATE);
                 mIsBound = true;
             }
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mIsBound){
+        if (mIsBound) {
             unbindService(conn);
             mIsBound = false;
         }
