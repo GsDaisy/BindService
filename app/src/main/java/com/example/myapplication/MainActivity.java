@@ -121,8 +121,10 @@ public class MainActivity extends AppCompatActivity {
     private void startServiceBind() {
         startService(new Intent(this, RemoteService.class));
         Intent intent = new Intent(this, RemoteService.class);
-        intent.setAction("com.example.myapplication.RemoteService");
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+        Intent i = new Intent();
+        i.setPackage("com.example.myapplication");
+        i.setAction("com.example.myapplication.RemoteService");
+        bindService(i, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     private void stopServiceBind() {

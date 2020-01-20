@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff694221-cfbf-49ea-a1ed-28fd27d17609" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myapplication/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myapplication/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/myapplication/RemoteService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="152" column="25" lean-forward="true" selection-start-line="152" selection-start-column="25" selection-end-line="152" selection-end-column="25" />
+            <state relative-caret-position="171">
+              <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
               <folding>
                 <element signature="e#399#2627#0" />
                 <element signature="e#4352#5510#0" expanded="true" />
@@ -61,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/myapplication/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="124" column="59" lean-forward="true" selection-start-line="124" selection-start-column="59" selection-end-line="124" selection-end-column="59" />
+            <state relative-caret-position="285">
+              <caret line="123" column="32" lean-forward="true" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
               <folding>
                 <element signature="e#503#2941#0" />
                 <element signature="e#2982#3240#0" expanded="true" />
@@ -99,6 +98,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/myapplication/RemoteService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/myapplication/MainActivity.java" />
       </list>
     </option>
@@ -157,8 +157,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1927" />
-    <option name="y" value="31" />
+    <option name="x" value="2077" />
+    <option name="y" value="80" />
     <option name="width" value="1388" />
     <option name="height" value="927" />
   </component>
@@ -237,6 +237,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -332,7 +333,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1927" y="31" width="1388" height="927" extended-state="0" />
+    <frame x="2077" y="80" width="1388" height="927" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" visible="true" weight="0.3298193" />
@@ -367,18 +368,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/aidl/com/example/myapplication/IRemoteService.aidl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/myapplication/RemoteService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="152" column="25" lean-forward="true" selection-start-line="152" selection-start-column="25" selection-end-line="152" selection-end-column="25" />
-          <folding>
-            <element signature="e#399#2627#0" />
-            <element signature="e#4352#5510#0" expanded="true" />
-            <element signature="e#5509#5510#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
@@ -387,10 +376,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/myapplication/RemoteService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
+          <folding>
+            <element signature="e#399#2627#0" />
+            <element signature="e#4352#5510#0" expanded="true" />
+            <element signature="e#5509#5510#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/myapplication/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="124" column="59" lean-forward="true" selection-start-line="124" selection-start-column="59" selection-end-line="124" selection-end-column="59" />
+        <state relative-caret-position="285">
+          <caret line="123" column="32" lean-forward="true" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
           <folding>
             <element signature="e#503#2941#0" />
             <element signature="e#2982#3240#0" expanded="true" />
