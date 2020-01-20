@@ -19,7 +19,12 @@
 
         <service
             android:name="com.example.myapplication.RemoteService"
-            android:process=":remote" />
+            android:process=":remote">
+
+            <intent-filter>
+                <action android:name="com.example.myapplication.RemoteService" />
+            </intent-filter>
+        </service>
 
     </application>
 

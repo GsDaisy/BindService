@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     IRemoteServiceCallback mCallback = new IRemoteServiceCallback.Stub() {
-
         @Override
         public void valueChanged(long value) throws RemoteException {
             Log.d("main value", "value : " + value);
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     private void startServiceBind() {
         startService(new Intent(this, RemoteService.class));
         Intent intent = new Intent(this, RemoteService.class);
-        intent.setAction("com.example.myapplication");
+        intent.setAction("com.example.myapplication.RemoteService");
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 

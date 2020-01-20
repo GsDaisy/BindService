@@ -79,7 +79,7 @@ public class RemoteService extends Service {
         }
     }*/
 
-    public static final String INTENT_ACTION = "com.example.myapplication";
+    public static final String INTENT_ACTION = "com.example.myapplication.RemoteService";
     private static final int MSG_WORK = 1;
 
 
