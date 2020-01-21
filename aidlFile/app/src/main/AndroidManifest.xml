@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.helixtech.aidlfile">
 
     <application
         android:allowBackup="true"
@@ -16,19 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name="com.example.myapplication.RemoteService"
-            android:process=":remote"
-            android:enabled="true"
-            android:exported="true"
-            >
-
-            <intent-filter>
-                <action android:name="com.example.myapplication.RemoteService" />
-            </intent-filter>
-        </service>
-
     </application>
 
 </manifest>
