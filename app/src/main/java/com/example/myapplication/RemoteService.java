@@ -147,7 +147,7 @@ public class RemoteService extends Service {
                     for (int i = 0; i < n; i++) {
                         try {
                             callbacks.getBroadcastItem(i).valueChanged(System.currentTimeMillis());
-                            Log.d("value", callbacks.getBroadcastItem(i).toString());
+                            Log.d("value", i+" : "+callbacks.getBroadcastItem(i).toString());
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.example.myapplication"
+    android:usesCleartextTraffic="true">
+
+    <uses-permission android:name="com.xamarin.xample.messengerservice.REQUEST_TIMESTAMP" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -19,11 +26,9 @@
 
         <service
             android:name="com.example.myapplication.RemoteService"
-            android:process=":remote"
             android:enabled="true"
             android:exported="true"
-            >
-
+            android:process=":remote">
             <intent-filter>
                 <action android:name="com.example.myapplication.RemoteService" />
             </intent-filter>

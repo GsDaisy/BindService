@@ -122,12 +122,15 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void startServiceBind() {
+        Log.d("진입","startServiceBind()");
         //startService(new Intent(this, RemoteService.class));
         //Intent intent = new Intent(this, RemoteService.class);
         Intent i = new Intent();
         i.setPackage("com.example.myapplication");
         i.setAction("com.example.myapplication.RemoteService");
+        Log.d("중간","startServiceBind()");
         bindService(i, mConnection, Context.BIND_AUTO_CREATE);
+        Log.d("끝","startServiceBind()");
     }
 
     private void stopServiceBind() {
