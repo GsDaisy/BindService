@@ -81,6 +81,7 @@ public class RemoteService extends Service {
 
     public static final String INTENT_ACTION = "com.example.myapplication.RemoteService";
     private static final int MSG_WORK = 1;
+    private static final String TAG = "RemoteService";
 
 
     final RemoteCallbackList<IRemoteServiceCallback> callbacks = new RemoteCallbackList<IRemoteServiceCallback>();
@@ -115,18 +116,18 @@ public class RemoteService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("TEST", "onBind..");
+        Log.d(TAG, "onBind..");
         if (intent.getAction().equals(INTENT_ACTION)) {
-            Log.d("TEST", "action is equals : " + intent.getAction());
+            Log.d(TAG, "action is equals : " + intent.getAction());
             return mBinder;
         }
-        Log.d("Test", "action is not equals : " + intent.getAction());
+        Log.d(TAG, "action is not equals : " + intent.getAction());
         return null;
     }
 
     @Override
     public void onCreate() {
-        Log.d("test", "service onCreate()");
+        Log.d(TAG, "service onCreate()");
         handler.sendEmptyMessage(MSG_WORK);
         super.onCreate();
     }
@@ -147,12 +148,12 @@ public class RemoteService extends Service {
                     for (int i = 0; i < n; i++) {
                         try {
                             callbacks.getBroadcastItem(i).valueChanged(System.currentTimeMillis());
-                            Log.d("value", i+" : "+callbacks.getBroadcastItem(i).toString());
+                            Log.d(TAG, i+" : "+callbacks.getBroadcastItem(i).toString());
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
                     }
-                    Log.d("TEST", "Handler work : callbacks clients count is " + n);
+                    Log.d(TAG, "Handler work : callbacks clients count is " + n);
                     callbacks.finishBroadcast();
 
                     try {

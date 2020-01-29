@@ -1,5 +1,4 @@
 package com.helixtech.aidlclient;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +18,8 @@ import com.example.myapplication.IRemoteServiceCallback;
 
 public class MainActivity extends AppCompatActivity {
     /*private final String TAG = "MainActivity";
-
     private Messenger mServiceCallback = null;
     private Messenger mClientCallback = new Messenger(new CallbackHandler());
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +40,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         Log.d(TAG, "Trying to connect to Service");
         Intent intent = new Intent(getApplicationContext(), RemoteService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
-
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "onServiceConnected");
             mServiceCallback = new Messenger(service);
-
             Message connect_msg = Message.obtain(null, RemoteService.MSG_CLIENT_CONNECT);
             connect_msg.replyTo = mClientCallback;
             try {
@@ -64,14 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
         @Override
         public void onServiceDisconnected(ComponentName name) {
             Log.d(TAG, "onServiceDisconnected");
             mServiceCallback = null;
         }
     };
-
     private class CallbackHandler extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -123,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void startServiceBind() {
         Log.d("진입","startServiceBind()");
-        //startService(new Intent(this, RemoteService.class));
-        //Intent intent = new Intent(this, RemoteService.class);
         Intent i = new Intent();
         i.setPackage("com.example.myapplication");
         i.setAction("com.example.myapplication.RemoteService");
@@ -135,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void stopServiceBind() {
         unbindService(mConnection);
-        //startService(new Intent(this, RemoteService.class));
     }
 
     @Override
@@ -157,7 +146,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
