@@ -17,16 +17,6 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.helixtech.msgservicetest.MessengerService"
-            android:exported="true"
-            android:process=":remote"
-            android:stopWithTask="false">
-
-            <intent-filter>
-                <action android:name="com.helixtech.msgservicetest.MessengerService" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

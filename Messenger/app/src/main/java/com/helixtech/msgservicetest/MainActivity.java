@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     private Messenger mService;
     private final Messenger mMessenger = new Messenger(new IncomingHandler());
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "ClientActivity";
     private static final int MSG_REGISTER_CLIENT = 44;
     private static final int MSG_SET_VALUE = 66;
     private static final int MSG_UNREGISTER_CLIENT = 55;
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
 
             switch (msg.what) {
-                case MessengerService.MSG_SET_VALUE:
-                    Log.d(TAG, msg.arg1 + " -> msg set value");
+                case MainActivity.MSG_SET_VALUE:
+                    Log.d(TAG, "Msg from Service : received/" + msg.arg1);
                     break;
                 default:
                     super.handleMessage(msg);
@@ -53,13 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            mService = new Messenger(service);
+            mService = new Messenger(service); //서비스가 전달해준 IBinder 객체를 기반으로 Messenger 객체 생성
             Log.d(TAG, "onServiceConnected()");
 
             try {
                 Message msg = Message.obtain(null, MSG_REGISTER_CLIENT);
                 msg.replyTo = mMessenger;
                 mService.send(msg);
+
                 Log.d(TAG, "Msg set value 전 : " + this.hashCode());
                 msg = Message.obtain(null, MSG_SET_VALUE, this.hashCode(), 0);
                 mService.send(msg);

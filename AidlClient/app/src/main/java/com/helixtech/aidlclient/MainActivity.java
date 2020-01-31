@@ -1,4 +1,5 @@
 package com.helixtech.aidlclient;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -114,13 +115,13 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void startServiceBind() {
-        Log.d("진입","startServiceBind()");
+        Log.d("진입", "startServiceBind()");
         Intent i = new Intent();
         i.setPackage("com.example.myapplication");
         i.setAction("com.example.myapplication.RemoteService");
-        Log.d("중간","startServiceBind()");
+        Log.d("중간", "startServiceBind()");
         bindService(i, mConnection, Context.BIND_AUTO_CREATE);
-        Log.d("끝","startServiceBind()");
+        Log.d("끝", "startServiceBind()");
     }
 
     private void stopServiceBind() {
