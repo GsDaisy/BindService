@@ -33,6 +33,11 @@ public class MessengerService extends Service {
                 case MSG_UNREGISTER_CLIENT:
                     Log.d(TAG, "Received MSG_UNREGISTER_CLIENT message from client");
                     mClients.remove(msg.replyTo);
+                    try {
+                        msg.replyTo.send(Message.obtain(null, MessengerService.MSG_UNREGISTER_CLIENT, 0,1));
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case MSG_SET_VALUE:
                     Log.d(TAG, "Received message from client : MSG_ADD_VALUE");
@@ -40,12 +45,12 @@ public class MessengerService extends Service {
                     for (int i = mClients.size(); i >= 1; i--) {
                         try {
                             Log.d(TAG, "Send msg_added_value message to client : " + i);
-                            Log.d(TAG, "mValue : "+mValue);
+                            Log.d(TAG, "mValue : " + mValue);
        /*                     Bundle bundle = new Bundle();
                             bundle.putInt("service_count", mValue);*/
-                            mClients.get(i-1).send(Message.obtain(null, MSG_SET_VALUE, mValue, 0));
+                            mClients.get(i - 1).send(Message.obtain(null, MSG_SET_VALUE, mValue, 0));
                         } catch (RemoteException e) {
-                            mClients.remove(i-1);
+                            mClients.remove(i - 1);
                         }
                     }
                     break;

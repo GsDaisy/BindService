@@ -36,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 case MainActivity.MSG_SET_VALUE:
                     Log.d(TAG, "Msg from Service : received/" + msg.arg1);
                     break;
+                case MainActivity.MSG_UNREGISTER_CLIENT:
+                    Log.d(TAG, "Msg from Service : UNREGISTER");
+                    break;
                 default:
+                    Log.d(TAG, "default 에 들어옴");
                     super.handleMessage(msg);
             }
         }
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         msg.replyTo = mMessenger;
                         mService.send(msg);
                     } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
                     unbindService(conn);
                     mIsBound = false;
