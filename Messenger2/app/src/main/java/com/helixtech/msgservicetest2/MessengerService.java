@@ -34,7 +34,7 @@ public class MessengerService extends Service {
                     Log.d(TAG, "Received MSG_UNREGISTER_CLIENT message from client");
                     mClients.remove(msg.replyTo);
                     try {
-                        msg.replyTo.send(Message.obtain(null, MessengerService.MSG_UNREGISTER_CLIENT, 0,1));
+                        msg.replyTo.send(Message.obtain(null, MessengerService.MSG_UNREGISTER_CLIENT, 0, 1));
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }

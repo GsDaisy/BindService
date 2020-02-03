@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "Msg from Service : UNREGISTER");
                     break;
                 default:
-                    Log.d(TAG, "default 에 들어옴");
                     super.handleMessage(msg);
             }
         }
@@ -88,10 +87,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn3 = new Button(getBaseContext());
         btn3.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                //Intent i = new Intent(getApplicationContext(), MessengerService.class);
-                //i.setPackage("com.helixtech.msgservicetest");
-                //i.setAction("com.helixtech.msgservicetest.MessengerService");
-
                 Intent i = new Intent();
                 i.setPackage("com.helixtech.msgservicetest2");
                 i.setAction("com.helixtech.msgservicetest2.MessengerService");
