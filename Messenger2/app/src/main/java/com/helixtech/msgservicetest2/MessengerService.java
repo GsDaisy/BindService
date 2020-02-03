@@ -37,15 +37,15 @@ public class MessengerService extends Service {
                 case MSG_SET_VALUE:
                     Log.d(TAG, "Received message from client : MSG_ADD_VALUE");
                     mValue = msg.arg1;
-                    for (int i = mClients.size() - 1; i >= 0; i--) {
+                    for (int i = mClients.size(); i >= 1; i--) {
                         try {
-                            Log.d(TAG, "Send msg_added_value message to client : " + i+1);
+                            Log.d(TAG, "Send msg_added_value message to client : " + i);
                             Log.d(TAG, "mValue : "+mValue);
-       /*                   Bundle bundle = new Bundle();
+       /*                     Bundle bundle = new Bundle();
                             bundle.putInt("service_count", mValue);*/
-                            mClients.get(i).send(Message.obtain(null, MSG_SET_VALUE, mValue, 0));
+                            mClients.get(i-1).send(Message.obtain(null, MSG_SET_VALUE, mValue, 0));
                         } catch (RemoteException e) {
-                            mClients.remove(i);
+                            mClients.remove(i-1);
                         }
                     }
                     break;
